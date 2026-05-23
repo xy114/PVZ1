@@ -1,0 +1,179 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  playerSettingsVersion: 10
+  productName: PVZ_Arknights
+  companyName: ArknightsPVZ
+  applicationIdentifier: com.arknightspvz.game
+  version: 1.0.0
+  bundleVersion: 1.0
+  m_Icon: {fileID: 0}
+  m_SplashScreen:
+    m_ShowUnitySplashScreen: 0
+    m_SplashScreenBackground: {r: 0.13333334, g: 0.13333334, b: 0.1882353, a: 1}
+    m_LogoPosition: {x: 0.5, y: 0.5}
+    m_ShowProgressBar: 1
+    m_ProgressBarPosition: {x: 0.5, y: 0.3}
+    m_ProgressBarWidth: 0.4
+    m_ProgressBarHeight: 0.02
+    m_ProgressBarBackingColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    m_ProgressBarColor: {r: 0.0, g: 0.76862746, b: 0.8156863, a: 1}
+  m_ResizableWindow: 1
+  m_FullscreenMode: 1
+  m_DefaultScreenWidth: 1920
+  m_DefaultScreenHeight: 1080
+  m_ResolutionDialogSetting: 1
+  m_RenderOutsideSafeArea: 0
+  m_VSyncCount: 1
+  m_StaticBatchSize: 4096
+  m_DynamicBatchSize: 256
+  m_MobileTextureSubtarget: 0
+  m_VirtualRealitySupported: 0
+  m_StereoRenderingPath: 1
+  m_UseOcclusionCulling: 0
+  m_LinearColorSpace: 0
+  m_ColorSpace: 0
+  m_ScreenOrientation: 1
+  m_AllowAutorotationToPortrait: 1
+  m_AllowAutorotationToPortraitUpsideDown: 1
+  m_AllowAutorotationToLandscapeLeft: 1
+  m_AllowAutorotationToLandscapeRight: 1
+  m_ForceAutorotation: 0
+  m_AndroidDisableDepthAndStencilBuffers: 0
+  m_AndroidRenderOutsideSafeArea: 0
+  m_iOSShowActivityIndicatorOnLoading: 1
+  m_iOSActivityIndicatorStyle: 0
+  m_iOSStatusBarHidden: 0
+  m_iOSStatusBarStyle: 0
+  m_iOSRequiresPersistentWiimote: 0
+  m_iOSOptimizeShadersForiOS: 1
+  m_iOSUseOnDemandResources: 0
+  m_iOSAppTrackingTransparencyDescription: 
+  m_tvOSTVOSSupported: 0
+  m_tvOSRequiresPersistentInternetConnection: 0
+  m_tvOSRequiresFullKeyboardAccess: 0
+  m_WSAUWPBuildType: 0
+  m_WSAUWPCapability: 0
+  m_WSAUWPPreferredOrientation: 0
+  m_WSAUWPAlwaysOnTop: 0
+  m_WSAUWPRunOnStartup: 0
+  m_WSAUWPDesktopBridge: 0
+  m_WSAUWPVisualElementsBackgroundColor: {r: 0.13333334, g: 0.13333334, b: 0.1882353, a: 1}
+  m_WSAUWPSquare150x150LogoPath: 
+  m_WSAUWPSquare44x44LogoPath: 
+  m_WSAUWPSplashScreenBackgroundColor: {r: 0.13333334, g: 0.13333334, b: 0.1882353, a: 1}
+  m_WSAUWPSplashScreenPath: 
+  m_WSAUWPSmallLogoPath: 
+  m_WSAUWPWideLogoPath: 
+  m_WSAUWPDisplayName: PVZ_Arknights
+  m_StandaloneRenderingPath: 1
+  m_StandaloneColorSpace: 0
+  m_StandaloneAllowFullscreenSwitch: 1
+  m_StandaloneForceSingleInstance: 0
+  m_StandaloneWindowResizeMethod: 0
+  m_StandaloneMaximizedWindow: 0
+  m_StandaloneAlwaysOnTop: 0
+  m_StandaloneShowCursor: 1
+  m_StandaloneFixedFrameRate: 0
+  m_StandaloneTargetFrameRate: 60
+  m_StandaloneEnableVR: 0
+  m_StandaloneDisableHWAcceleration: 0
+  m_StandaloneGraphicsJobs: 0
+  m_StandaloneUseDX11: 1
+  m_StandaloneUseDX12: 0
+  m_StandaloneUseVulkan: 0
+  m_StandaloneUseMetal: 0
+  m_StandaloneForceOpenGLCoreProfile: 0
+  m_StandaloneOpenGLVersion: 33
+  m_StandaloneUseLegacyGL: 0
+  m_StandalonePrebakeCollision: 1
+  m_StandaloneEnableOptimizedShaders: 1
+  m_StandaloneEnableMultithreadedRendering: 1
+  m_StandaloneEnableNativePlatformBackends: 1
+  m_StandaloneEnableAudio: 1
+  m_StandaloneEnableVideo: 1
+  m_StandaloneEnableWebCam: 0
+  m_StandaloneEnableMicrophone: 0
+  m_StandaloneEnableSpeech: 0
+  m_StandaloneEnableGamepad: 1
+  m_StandaloneEnableHID: 1
+  m_StandaloneEnableInput: 1
+  m_StandaloneEnableTouch: 0
+  m_StandaloneEnablePen: 0
+  m_StandaloneEnableTablet: 0
+  m_StandaloneEnableVirtualKeyboard: 0
+  m_StandaloneEnableCursorLock: 0
+  m_StandaloneEnableCursorHide: 1
+  m_StandaloneEnableCursorConfine: 0
+  m_StandaloneEnableCursorRawInput: 0
+  m_StandaloneEnableCursorSmooth: 0
+  m_StandaloneEnableCursorAcceleration: 1
+  m_StandaloneEnableCursorVisible: 1
+  m_StandaloneEnableCursorClipping: 0
+  m_StandaloneEnableCursorWarp: 0
+  m_StandaloneEnableCursorLockOnFocus: 0
+  m_StandaloneEnableCursorHideOnFocus: 0
+  m_StandaloneEnableCursorConfineOnFocus: 0
+  m_StandaloneEnableCursorRawInputOnFocus: 0
+  m_StandaloneEnableCursorSmoothOnFocus: 0
+  m_StandaloneEnableCursorAccelerationOnFocus: 0
+  m_StandaloneEnableCursorVisibleOnFocus: 0
+  m_StandaloneEnableCursorClippingOnFocus: 0
+  m_StandaloneEnableCursorWarpOnFocus: 0
+  m_StandaloneEnableFullscreenMode: 1
+  m_StandaloneEnableBorderlessWindow: 0
+  m_StandaloneEnableResizableWindow: 1
+  m_StandaloneEnableWindowDecoration: 1
+  m_StandaloneEnableWindowTitleBar: 1
+  m_StandaloneEnableWindowMinimize: 1
+  m_StandaloneEnableWindowMaximize: 1
+  m_StandaloneEnableWindowClose: 1
+  m_StandaloneEnableWindowDrag: 1
+  m_StandaloneEnableWindowResize: 1
+  m_StandaloneEnableWindowMove: 1
+  m_StandaloneEnableWindowFocus: 1
+  m_StandaloneEnableWindowActivation: 1
+  m_StandaloneEnableWindowTopMost: 0
+  m_StandaloneEnableWindowAlwaysOnTop: 0
+  m_StandaloneEnableWindowTransparent: 0
+  m_StandaloneEnableWindowBlur: 0
+  m_StandaloneEnableWindowShadow: 1
+  m_StandaloneEnableWindowAnimation: 1
+  m_StandaloneEnableWindowSizing: 1
+  m_StandaloneEnableWindowPositioning: 1
+  m_StandaloneEnableWindowState: 1
+  m_StandaloneEnableWindowVisibility: 1
+  m_StandaloneEnableWindowInteraction: 1
+  m_StandaloneEnableWindowInput: 1
+  m_StandaloneEnableWindowKeyboard: 1
+  m_StandaloneEnableWindowMouse: 1
+  m_StandaloneEnableWindowGamepad: 1
+  m_StandaloneEnableWindowHID: 1
+  m_StandaloneEnableWindowTouch: 0
+  m_StandaloneEnableWindowPen: 0
+  m_StandaloneEnableWindowTablet: 0
+  m_StandaloneEnableWindowVirtualKeyboard: 0
+  m_StandaloneEnableWindowCursor: 1
+  m_StandaloneEnableWindowCursorLock: 0
+  m_StandaloneEnableWindowCursorHide: 1
+  m_StandaloneEnableWindowCursorConfine: 0
+  m_StandaloneEnableWindowCursorRawInput: 0
+  m_StandaloneEnableWindowCursorSmooth: 0
+  m_StandaloneEnableWindowCursorAcceleration: 1
+  m_StandaloneEnableWindowCursorVisible: 1
+  m_StandaloneEnableWindowCursorClipping: 0
+  m_StandaloneEnableWindowCursorWarp: 0
+  m_StandaloneEnableWindowCursorLockOnFocus: 0
+  m_StandaloneEnableWindowCursorHideOnFocus: 0
+  m_StandaloneEnableWindowCursorConfineOnFocus: 0
+  m_StandaloneEnableWindowCursorRawInputOnFocus: 0
+  m_StandaloneEnableWindowCursorSmoothOnFocus: 0
+  m_StandaloneEnableWindowCursorAccelerationOnFocus: 0
+  m_StandaloneEnableWindowCursorVisibleOnFocus: 0
+  m_StandaloneEnableWindowCursorClippingOnFocus: 0
+  m_StandaloneEnableWindowCursorWarpOnFocus: 0
