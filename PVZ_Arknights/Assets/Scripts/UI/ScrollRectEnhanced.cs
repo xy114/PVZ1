@@ -1,81 +1,100 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ScrollRectEnhanced : ScrollRect
+[RequireComponent(typeof(ScrollRect))]
+public class ScrollRectEnhanced : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [Header("Settings")]
     public float scrollSensitivity = 10f;
     public float dragSensitivity = 1f;
-    
-    private Vector2 dragStartPosition;
-    private Vector2 scrollStartPosition;
+    public float smoothness = 5f;
+    public bool useInertia = true;
+    public float decelerationRate = 0.135f;
+
+    private ScrollRect scrollRect;
+    private RectTransform content;
     private bool isDragging = false;
-    
-    protected override void Awake()
+    private Vector2 dragStartPosition;
+    private Vector2 contentStartPosition;
+    private Vector2 velocity;
+    private Vector2 lastContentPosition;
+
+    private void Awake()
     {
-        base.Awake();
-        movementType = MovementType.Clamped;
+        scrollRect = GetComponent<ScrollRect>();
+        content = scrollRect.content;
+        scrollRect.scrollSensitivity = scrollSensitivity;
+        scrollRect.inertia = useInertia;
+        scrollRect.decelerationRate = decelerationRate;
     }
-    
-    void Update()
+
+    private void Update()
     {
+        if (content == null) return;
+
         HandleMouseScroll();
-        HandleMouseDrag();
+        HandleDragScroll();
+
+        if (!isDragging && useInertia && velocity.magnitude > 0.1f)
+        {
+            content.anchoredPosition += velocity * Time.unscaledDeltaTime;
+            velocity *= (1f - decelerationRate * Time.unscaledDeltaTime);
+        }
     }
-    
-    void HandleMouseScroll()
+
+    private void HandleMouseScroll()
     {
+        if (isDragging) return;
+
         float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
-        
-        if (scrollDelta != 0 && content != null)
+        if (Mathf.Abs(scrollDelta) > 0.01f)
         {
             Vector2 newPosition = content.anchoredPosition;
-            
-            if (horizontal)
-            {
-                newPosition.x += scrollDelta * scrollSensitivity * 50f;
-            }
-            
-            if (vertical)
-            {
-                newPosition.y -= scrollDelta * scrollSensitivity * 50f;
-            }
-            
-            content.anchoredPosition = newPosition;
+            if (scrollRect.vertical)
+                newPosition.y += scrollDelta * scrollSensitivity * 50f;
+            if (scrollRect.horizontal)
+                newPosition.x -= scrollDelta * scrollSensitivity * 50f;
+            content.anchoredPosition = Vector2.Lerp(content.anchoredPosition, newPosition, smoothness * Time.unscaledDeltaTime);
         }
     }
-    
-    void HandleMouseDrag()
+
+    private void HandleDragScroll()
     {
-        if (Input.GetMouseButtonDown(0))
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isDragging = true;
+        dragStartPosition = eventData.position;
+        contentStartPosition = content.anchoredPosition;
+        velocity = Vector2.zero;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isDragging = false;
+        if (useInertia)
         {
-            dragStartPosition = Input.mousePosition;
-            scrollStartPosition = content.anchoredPosition;
-            isDragging = true;
+            velocity = (content.anchoredPosition - lastContentPosition) / Time.unscaledDeltaTime;
         }
-        
-        if (Input.GetMouseButton(0) && isDragging)
+    }
+
+    private void LateUpdate()
+    {
+        if (isDragging)
         {
-            Vector2 currentPosition = Input.mousePosition;
-            Vector2 delta = currentPosition - dragStartPosition;
+            Vector2 currentPos = Input.mousePosition;
+            Vector2 delta = (Vector2)currentPos - dragStartPosition;
             
-            Vector2 newPosition = scrollStartPosition;
-            
-            if (horizontal)
-            {
+            Vector2 newPosition = contentStartPosition;
+            if (scrollRect.vertical)
+                newPosition.y += delta.y * dragSensitivity;
+            if (scrollRect.horizontal)
                 newPosition.x += delta.x * dragSensitivity;
-            }
             
-            if (vertical)
-            {
-                newPosition.y -= delta.y * dragSensitivity;
-            }
-            
-            content.anchoredPosition = newPosition;
-        }
-        
-        if (Input.GetMouseButtonUp(0))
-        {
-            isDragging = false;
+            content.anchoredPosition = Vector2.Lerp(content.anchoredPosition, newPosition, smoothness * Time.unscaledDeltaTime);
+            lastContentPosition = content.anchoredPosition;
         }
     }
 }
