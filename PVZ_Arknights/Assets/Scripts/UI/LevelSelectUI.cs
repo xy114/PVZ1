@@ -4,66 +4,73 @@ using System.Collections.Generic;
 
 public class LevelSelectUI : MonoBehaviour
 {
-    public ScrollRect scrollRect;
+    [Header("UI References")]
+    public ScrollRectEnhanced scrollRect;
     public GameObject levelCardPrefab;
     public Transform levelContainer;
     public Button backButton;
-    
-    public LevelData[] levels;
-    
-    void Start()
+
+    [Header("Level Data")]
+    public LevelDataSO[] levels;
+
+    private List<GameObject> levelCards = new List<GameObject>();
+
+    private void Start()
     {
         backButton.onClick.AddListener(OnBackButton);
         InitializeLevelCards();
+        
+        AddNeonEffects();
     }
-    
-    void InitializeLevelCards()
+
+    private void InitializeLevelCards()
     {
-        foreach (LevelData level in levels)
+        foreach (Transform child in levelContainer)
+        {
+            Destroy(child.gameObject);
+        }
+        levelCards.Clear();
+
+        foreach (LevelDataSO level in levels)
         {
             GameObject card = Instantiate(levelCardPrefab, levelContainer);
             LevelCardUI cardUI = card.GetComponent<LevelCardUI>();
-            cardUI.Initialize(level);
+            if (cardUI != null)
+            {
+                cardUI.Initialize(level);
+            }
+            levelCards.Add(card);
         }
     }
-    
-    void OnBackButton()
+
+    private void AddNeonEffects()
     {
+        AddNeonToButton(backButton);
+    }
+
+    private void AddNeonToButton(Button button)
+    {
+        if (button != null && button.gameObject.GetComponent<NeonBorderEffect>() == null)
+        {
+            NeonBorderEffect neon = button.gameObject.AddComponent<NeonBorderEffect>();
+            if (UIManager.Instance != null && UIManager.Instance.theme != null)
+            {
+                neon.neonColor = UIManager.Instance.theme.NeonCyan;
+            }
+        }
+    }
+
+    private void OnBackButton()
+    {
+        PlayClickSound();
         SceneLoader.Instance.LoadScene(SceneName.MainMenu);
     }
-}
 
-public class LevelCardUI : MonoBehaviour
-{
-    public Text levelNameText;
-    public Text levelNumberText;
-    public Text difficultyText;
-    public Button selectButton;
-    
-    private LevelData level;
-    
-    public void Initialize(LevelData levelData)
+    private void PlayClickSound()
     {
-        level = levelData;
-        levelNameText.text = level.levelName;
-        levelNumberText.text = "关卡 " + level.levelNumber;
-        
-        string difficultyStr = "";
-        switch (level.difficulty)
+        if (UIManager.Instance != null)
         {
-            case 1: difficultyStr = "简单"; break;
-            case 2: difficultyStr = "普通"; break;
-            case 3: difficultyStr = "困难"; break;
-            default: difficultyStr = "普通"; break;
+            UIManager.Instance.PlayButtonClick();
         }
-        difficultyText.text = difficultyStr;
-        
-        selectButton.onClick.AddListener(OnSelectLevel);
-    }
-    
-    void OnSelectLevel()
-    {
-        GameManager.Instance.SetLevel(level.levelNumber);
-        SceneLoader.Instance.LoadScene(SceneName.CharacterSelect);
     }
 }
